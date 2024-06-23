@@ -1,4 +1,42 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true }
+	ssr: false,
+	devtools: { enabled: false },
+	css: [
+		'~/assets/styles/main.scss',
+	],
+	app: {
+		head: {
+			title: 'Base Nuxt',
+			link: [
+				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+			],
+		},
+	},
+	modules: [
+		'nuxt-icon',
+		'nuxt-swiper',
+		'nuxt-svgo',
+		'@pinia/nuxt'
+	],
+	imports: {
+		dirs: [
+			'stores',
+		],
+	},
+	runtimeConfig: {
+		public: {
+			baseURL: process.env.BASE_URL || 'http://localhost:1337',
+			appURL: process.env.APP_URL || 'http://localhost:3000',
+		},
+	},
+	vite: {
+		css: {
+			preprocessorOptions: {
+				sass: {
+					additionalData: '@import "~/assets/styles/variables.sass"\nbody\n\tmargin: 0',
+				},
+			},
+		},
+	},
 })
