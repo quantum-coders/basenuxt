@@ -17,8 +17,17 @@ export default defineNuxtConfig({
 		'nuxt-icon',
 		'nuxt-swiper',
 		'nuxt-svgo',
-		'@pinia/nuxt'
+		'@pinia/nuxt',
+		"@nuxtjs/google-fonts"
 	],
+	googleFonts: {
+		families: {
+			Inter: [ 400, 500, 600, 700 ],
+		},
+		display: 'swap',
+		preconnect: true,
+		preload: true,
+	},
 	imports: {
 		dirs: [
 			'stores',
