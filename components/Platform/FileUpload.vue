@@ -166,8 +166,8 @@
 
 </script>
 
+<!--suppress SassScssResolvedByNameOnly -->
 <style lang="sass" scoped>
-
 	.upload-file
 		display: block
 

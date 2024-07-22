@@ -38,8 +38,8 @@
 	defineExpose({ openDialog, closeDialog, open, close });
 </script>
 
+<!--suppress SassScssResolvedByNameOnly -->
 <style lang="sass" scoped>
-
 	.dialog
 		border: 0
 		padding: 1rem

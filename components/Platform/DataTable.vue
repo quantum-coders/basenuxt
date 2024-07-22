@@ -593,6 +593,7 @@
 
 </script>
 
+<!--suppress SassScssResolvedByNameOnly -->
 <style lang="sass">
 	.pagination
 		li
