@@ -3,6 +3,7 @@
 		<input placeholder="Ask me anything..." type="text" v-model="prompt" @keyup.enter="addMessage" />
 
 		<div class="input-actions">
+			<!-- change -->
 			<a href="#" class="action-send" @click.prevent="addMessage">
 				<icon name="material-symbols:send" />
 			</a>
