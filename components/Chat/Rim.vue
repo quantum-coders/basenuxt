@@ -14,6 +14,23 @@
 					<div class="rim-image" v-if="r.rimType === 'image'">
 						<img alt="" :src="r.parameters.imageUrl">
 					</div>
+
+					<div class="rim-youtube-video" v-if="r.rimType === 'video'">
+						<!-- youtube video -->
+						<div class="ratio ratio-16x9">
+							<iframe
+								:src="`https://www.youtube.com/embed/${ r.parameters.videoId }`"
+								title="YouTube video player"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen
+							/>
+						</div>
+					</div>
+
+					<div v-else>
+						<pre>{{ r }}</pre>
+					</div>
 				</template>
 			</div>
 			<div class="rim-textual-content">
@@ -49,6 +66,9 @@
 
 <!--suppress SassScssResolvedByNameOnly -->
 <style lang="sass" scoped>
+
+	.ratio > *
+		position: absolute
 
 	.rim-image
 		img
