@@ -10,10 +10,10 @@
 		"postinstall": "nuxt prepare"
 	},
 	"devDependencies": {
+		"@nuxtjs/google-fonts": "^3.2.0",
 		"@pinia/nuxt": "^0.4.11",
 		"nuxt-icon": "^0.6.10",
 		"nuxt-svgo": "^3.0.1",
-		"@nuxtjs/google-fonts": "^3.2.0",
 		"pinia": "^2.1.4",
 		"sass": "^1.62.1",
 		"sass-loader": "^13.2.2"
@@ -23,6 +23,7 @@
 		"@vuelidate/validators": "^2.0.3",
 		"bootstrap": "^5.2.3",
 		"jquery": "^3.7.0",
+		"marked": "^13.0.2",
 		"nuxt": "^3.12.2",
 		"nuxt-swiper": "^1.2.2",
 		"uuid": "^9.0.0",

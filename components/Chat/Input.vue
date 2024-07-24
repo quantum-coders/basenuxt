@@ -22,6 +22,8 @@
 				text: prompt.value,
 			});
 
+			chat.sendMessage(prompt.value);
+
 			// scroll to the bottom animated
 			const thread = document.querySelector('.thread-wrapper');
 			thread.scrollTo({

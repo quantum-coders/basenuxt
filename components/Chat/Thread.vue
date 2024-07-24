@@ -24,5 +24,5 @@
 			min-height: 100px
 			max-width: 1000px
 			margin: 0 auto
-			padding: 1rem 0
+			padding: 1rem
 </style>
