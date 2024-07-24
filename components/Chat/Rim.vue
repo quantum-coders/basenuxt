@@ -120,6 +120,16 @@
 				display: flex
 				justify-content: center
 
+			.rim-audio
+				padding: 0.5rem
+				display: flex
+				justify-content: center
+				border-bottom: 1px solid var(--bs-border-color)
+
+				audio
+					width: 100%
+					height: 20px
+
 			.rim-rich-content
 				text-align: center
 
