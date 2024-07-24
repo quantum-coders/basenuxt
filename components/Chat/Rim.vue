@@ -2,10 +2,25 @@
 	<div class="rim-wrapper">
 		<div class="avatar"></div>
 		<div class="rim">
+			<!-- bootstrap loading spinner -->
+			<div class="rim-loading" v-if="!!message.loading">
+				<div class="spinner-border text-primary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+			</div>
+
+			<div class="rim-rich-content" v-if="message.rims">
+				<template v-for="r in message.rims">
+					<div class="rim-image" v-if="r.rimType === 'image'">
+						<img alt="" :src="r.parameters.imageUrl">
+					</div>
+				</template>
+			</div>
 			<div class="rim-textual-content">
 				<div v-html="html" />
 			</div>
 			<div class="rim-actions">
+				<span class="timestamp">{{ formattedTime }}</span>
 			</div>
 		</div>
 	</div>
@@ -24,10 +39,20 @@
 	// compute the html from the markdown
 	const html = computed(() => marked.parse(props.message.text));
 
+	// parse timestamp to get the time
+	const formattedTime = computed(() => {
+		const date = new Date(props.message.timestamp);
+		return date.toLocaleTimeString();
+	});
+
 </script>
 
 <!--suppress SassScssResolvedByNameOnly -->
 <style lang="sass" scoped>
+
+	.rim-image
+		img
+			width: 400px
 
 	.rim-wrapper
 		display: flex
@@ -58,12 +83,33 @@
 			border-radius: 0.5rem
 			width: fit-content
 			max-width: 80%
+			overflow: hidden
+
+			&:has(.rim-image)
+				width: min-content
+
+			.rim-loading
+				padding: 1rem
+				display: flex
+				justify-content: center
+
+			.rim-rich-content
+				text-align: center
 
 			.rim-textual-content
 				padding: 0.5rem 1rem
 
+				& > div *:last-child
+					margin-bottom: 0
+
 			.rim-actions
 				padding: 0.5rem
+				display: flex
 				border-top: 1px solid var(--bs-border-color)
+
+				.timestamp
+					margin-left: auto
+					font-size: 0.8rem
+					color: var(--bs-text-muted)
 
 </style>

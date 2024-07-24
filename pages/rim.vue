@@ -1,7 +1,12 @@
 <template>
 	<div :style="styles" class="section-wrapper">
 		<header class="general-header d-flex align-items-center p-3">
-			<platform-theme-switcher class="ms-auto" />
+
+			<div class="header-tools d-flex ms-auto align-items-center justify-content-end gap-2">
+				<platform-theme-switcher />
+				<solana-wallet-connect />
+			</div>
+
 		</header>
 		<div class="rim-experience">
 			<aside class="general-sidebar"></aside>
@@ -42,6 +47,9 @@
 	.general-header
 		height: 60px
 		border-bottom: 1px solid var(--bs-border-color)
+
+		.header-tools
+			width: 200px
 
 	.rim-experience
 		display: flex

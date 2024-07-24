@@ -8,13 +8,21 @@ export const useChatStore = defineStore('chat', () => {
 	const addMessage = (message) => {
 		// Add a unique ID to the message
 		message.uid = uuidv4();
+
+		// Add timestamp to the message
+		message.timestamp = new Date().toISOString();
+
 		messages.value.push(message);
 
 		return message;
 	};
 
 	const sendMessage = async (message) => {
-		const res = await $fetch('http://localhost:1337/ai/message', {
+
+		// Create a message for assistant
+		const assistantMessage = addMessage({ role: 'assistant', text: '', loading: true });
+
+		const res = await $fetch('http://localhost:1337/ai/message/rim', {
 			method: 'POST',
 			body: {
 				model: 'gpt-4',
@@ -22,9 +30,6 @@ export const useChatStore = defineStore('chat', () => {
 			},
 			responseType: 'stream',
 		});
-
-		// Create a message for assistant
-		const assistantMessage = addMessage({ role: 'assistant', text: '' });
 
 		const reader = res.pipeThrough(new TextDecoderStream()).getReader();
 
@@ -55,14 +60,24 @@ export const useChatStore = defineStore('chat', () => {
 				}
 
 				if(line.startsWith('{') && line.endsWith('}')) {
+					const index = messages.value.findIndex((m) => m.uid === assistantMessage.uid);
+
 					try {
 						const json = JSON.parse(line);
 
-						if(typeof json.choices[0].delta.content === 'string') {
-							const value = json.choices[0].delta.content;
+						if(typeof json.type === 'string' && json.type === 'actionsSolved') {
+							continue;
+						}
 
-							// Add the data to the message
-							const index = messages.value.findIndex((m) => m.uid === assistantMessage.uid);
+						if(typeof json.type === 'string' && json.type === 'rims') {
+							console.log(json);
+							messages.value[index].rims = json.rims;
+							continue;
+						}
+
+						if(!!json.choices && typeof json.choices[0].delta.content === 'string') {
+							messages.value[index].loading = false;
+							const value = json.choices[0].delta.content;
 
 							if(index !== -1) {
 								if(typeof value !== 'undefined' && value !== 'undefined') {
