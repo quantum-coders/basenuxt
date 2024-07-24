@@ -27,6 +27,9 @@ export const useChatStore = defineStore('chat', () => {
 			body: {
 				model: 'gpt-4',
 				prompt: message,
+				properties: {
+					foo: 'bar'
+				}
 			},
 			responseType: 'stream',
 		});
