@@ -9,13 +9,20 @@
 				</div>
 			</div>
 
+			<div class="rim-audio" v-if="!!message.audio">
+				<audio controls>
+					<source :src="message.audio" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
+			</div>
+
 			<div class="rim-rich-content" v-if="message.rims">
 				<template v-for="r in message.rims">
 					<div class="rim-image" v-if="r.rimType === 'image'">
 						<img alt="" :src="r.parameters.imageUrl">
 					</div>
 
-					<div class="rim-youtube-video" v-if="r.rimType === 'video'">
+					<div class="rim-youtube-video" v-else-if="r.rimType === 'video'">
 						<!-- youtube video -->
 						<div class="ratio ratio-16x9">
 							<iframe
@@ -123,7 +130,7 @@
 					margin-bottom: 0
 
 			.rim-actions
-				padding: 0.5rem
+				padding: 0.2rem 0.5rem
 				display: flex
 				border-top: 1px solid var(--bs-border-color)
 

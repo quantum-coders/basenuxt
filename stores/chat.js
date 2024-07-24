@@ -41,6 +41,18 @@ export const useChatStore = defineStore('chat', () => {
 
 			if(done) {
 				console.log('Stream complete');
+
+				const index = messages.value.findIndex((m) => m.uid === assistantMessage.uid);
+
+				const audioRes = await useFetch('http://localhost:1337/ai/text-to-audio', {
+					method: 'POST',
+					body: { text: messages.value[index].text },
+				});
+
+				console.log(audioRes.data.value.data);
+
+				messages.value[index].audio = audioRes.data.value.data;
+
 				break;
 			}
 
