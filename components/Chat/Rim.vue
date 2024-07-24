@@ -35,6 +35,14 @@
 						</div>
 					</div>
 
+					<div class="rim-text" v-else-if="r.rimType === 'wallet'">
+						<pre>{{ r.parameters }}</pre>
+						<template v-for="b in r.parameters.balances">
+							<article>{{ b.name }}: {{ b.balance }}</article>
+						</template>
+
+					</div>
+
 					<div v-else>
 						<pre>{{ r }}</pre>
 					</div>

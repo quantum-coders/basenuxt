@@ -28,7 +28,7 @@ export const useChatStore = defineStore('chat', () => {
 				model: 'gpt-4',
 				prompt: message,
 				properties: {
-					foo: 'bar'
+					wallet: useSolanaStore().wallet,
 				}
 			},
 			responseType: 'stream',

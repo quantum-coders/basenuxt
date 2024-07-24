@@ -11,19 +11,19 @@
 	const authStore = useAuthStore();
 	initWallet({ autoConnect: true });
 
-	const connectedWallet = computed(() => {
+	const wallet = computed(() => {
 		const { publicKey, sendTransaction } = useWallet();
 
 		if(publicKey && publicKey.value) {
-			solanaStore.connectedWallet = publicKey.value.toBase58();
+			solanaStore.wallet = publicKey.value.toBase58();
 			return publicKey.value.toBase58();
 		}
 
-		solanaStore.connectedWallet = null;
+		solanaStore.wallet = null;
 		return null;
 	});
 
-	watch(connectedWallet, async (currentValue) => {
+	watch(wallet, async (currentValue) => {
 		if(currentValue) {
 			const connectRes = await fetch(`${ config.public.baseURL }/users/authenticate`, {
 				method: 'POST',
@@ -31,7 +31,7 @@
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					wallet: connectedWallet.value,
+					wallet: wallet.value,
 				}),
 			});
 
