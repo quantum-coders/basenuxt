@@ -11,6 +11,10 @@
 				<chat-rim-image :rim="chat.wisMessage.rims[0]" />
 			</template>
 
+			<template v-if="chat.wisMessage.rims[0].rimType === 'video'">
+				<chat-rim-youtube-video :rim="chat.wisMessage.rims[0]" />
+			</template>
+
 			<template v-if="chat.wisMessage.rims[0].rimType === 'wallet'">
 				<chat-rim-wallet-info :rim="chat.wisMessage.rims[0]" />
 			</template>
