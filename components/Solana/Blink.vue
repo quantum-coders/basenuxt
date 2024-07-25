@@ -101,10 +101,6 @@
 			}
 		}
 
-		console.log(url);
-		action.loading = false;
-		return;
-
 		const res = await useFetch(url, {
 			method: 'POST',
 			body: JSON.stringify({
@@ -112,12 +108,13 @@
 			}),
 		});
 
+		console.log("before");
 		if(res.error.value) {
 			console.error(res.error.value);
 			action.loading = false;
 			return
 		}
-
+		console.log("after");
 		await useSolanaStore().signEncodedTransaction(res.data.value.transaction);
 
 		action.loading = false;

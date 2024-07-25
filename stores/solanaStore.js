@@ -8,6 +8,7 @@ export const useSolanaStore = defineStore('solanaStore', () => {
 
 
     const signEncodedTransaction = async (encodedTransaction) => {
+        const {Buffer} = await import('buffer');
         let provider;
         if (useWallet().wallet.value.adapter.name.toLowerCase() === 'backpack') {
             provider = window.backpack;
@@ -26,7 +27,7 @@ export const useSolanaStore = defineStore('solanaStore', () => {
         const connection = new Connection('https://api.mainnet-beta.solana.com', 'confirmed');
 
         let transaction = Transaction.from(Buffer.from(encodedTransaction, 'base64'));
-
+        console.log("Signing tx", transaction)
         const tx = await provider.signAndSendTransaction(transaction);
         return await connection.confirmTransaction(tx,
             {
