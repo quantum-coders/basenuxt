@@ -150,7 +150,7 @@
 
 				audio
 					width: 100%
-					height: 20px
+					height: 30px
 
 			.rim-textual-content
 				padding: 0.5rem 1rem

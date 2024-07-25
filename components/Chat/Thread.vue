@@ -14,8 +14,8 @@
 				<h4 class="text-center mb-3">Try Luna now</h4>
 
 				<div class="examples-wrapper">
-					<div class="row">
-						<div class="col d-flex col-4">
+					<div class="row gy-3">
+						<div class="col d-flex col-12 col-sm-4">
 							<div class="example flex-grow-1" @click.prevent="addMessage('Give me my solana wallet balance')">
 								<p>
 									<icon name="material-symbols:account-balance-wallet-outline-rounded" />
@@ -24,7 +24,7 @@
 							</div>
 						</div>
 
-						<div class="col d-flex col-4">
+						<div class="col d-flex col-12 col-sm-4">
 							<div class="example flex-grow-1" @click.prevent="addMessage('Find a video about Solana Actions')">
 								<p>
 									<icon name="lucide:youtube" />
@@ -33,7 +33,7 @@
 							</div>
 						</div>
 
-						<div class="col d-flex col-4">
+						<div class="col d-flex col-12 col-sm-4">
 							<div class="example flex-grow-1" @click.prevent="addMessage('Transfer Sol to a user')">
 								<p>
 									<icon name="solar:transfer-horizontal-line-duotone" />
@@ -85,8 +85,11 @@
 
 	.examples
 		.examples-wrapper
-			max-width: var(--inner-wrapper-width)
+			max-width: 80%
 			margin: 0 auto
+
+			@media (min-width: $sm)
+				max-width: var(--inner-wrapper-width)
 
 		.example
 			border: 1px solid var(--bs-border-color)
