@@ -16,7 +16,7 @@
 				<div class="examples-wrapper">
 					<div class="row">
 						<div class="col d-flex col-4">
-							<div class="example flex-grow-1" @click.prevent="chat.sendMessage('Give me my solana wallet balance')">
+							<div class="example flex-grow-1" @click.prevent="addMessage('Give me my solana wallet balance')">
 								<p>
 									<icon name="material-symbols:account-balance-wallet-outline-rounded" />
 								</p>
@@ -25,7 +25,7 @@
 						</div>
 
 						<div class="col d-flex col-4">
-							<div class="example flex-grow-1" @click.prevent="chat.sendMessage('Find a video about Solana Blink Actions')">
+							<div class="example flex-grow-1" @click.prevent="addMessage('Find a video about Solana Actions')">
 								<p>
 									<icon name="lucide:youtube" />
 								</p>
@@ -34,7 +34,7 @@
 						</div>
 
 						<div class="col d-flex col-4">
-							<div class="example flex-grow-1" @click.prevent="chat.sendMessage('Transfer Sol to a user')">
+							<div class="example flex-grow-1" @click.prevent="addMessage('Transfer Sol to a user')">
 								<p>
 									<icon name="solar:transfer-horizontal-line-duotone" />
 								</p>
@@ -50,6 +50,19 @@
 
 <script setup>
 	const chat = useChatStore();
+
+	const addMessage = async (message) => {
+		if(message) {
+			chat.addMessage({
+				role: 'user',
+				text: message,
+			});
+
+			await chat.sendMessage(message);
+			await nextTick();
+			chat.scrollToBottom();
+		}
+	};
 </script>
 
 <!--suppress SassScssResolvedByNameOnly -->
@@ -72,7 +85,7 @@
 
 	.examples
 		.examples-wrapper
-			max-width: 80%
+			max-width: var(--inner-wrapper-width)
 			margin: 0 auto
 
 		.example
