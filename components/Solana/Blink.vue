@@ -108,6 +108,14 @@
 			}),
 		});
 
+		if(res.error.value) {
+			console.error(res.error.value);
+			action.loading = false;
+			return
+		}
+
+		await useSolanaStore().signEncodedTransaction(res.data.value.transaction);
+
 		action.loading = false;
 	};
 
