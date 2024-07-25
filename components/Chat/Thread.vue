@@ -18,11 +18,17 @@
 <style lang="sass" scoped>
 	.thread-area
 		flex-grow: 1
-		padding: 1rem
+		padding: 0.5rem
+
+		@media (min-width: $sm)
+			padding: 1rem
 
 		.thread-wrapper
 			min-height: 100px
 			max-width: 1000px
 			margin: 0 auto
-			padding: 1rem
+			padding: 0.5rem
+
+			@media (min-width: $sm)
+				padding: 1rem
 </style>

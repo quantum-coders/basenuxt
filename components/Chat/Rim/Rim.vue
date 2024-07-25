@@ -89,8 +89,11 @@
 
 	.rim-wrapper
 		display: flex
-		gap: 1rem
+		gap: 0.5rem
 		align-items: flex-start
+
+		@media (min-width: $sm)
+			gap: 1rem
 
 		&.is-assistant
 			justify-content: flex-start
@@ -121,12 +124,14 @@
 			background: var(--bs-body-bg)
 			border-radius: 0.5rem
 			width: fit-content
-			max-width: 80%
-			min-width: 200px
+			max-width: 90%
+			min-width: 100px
 			overflow: hidden
 
 			&:has(.rim-image)
+				min-width: 200px
 				width: min-content
+				max-width: 80%
 
 			.rim-loading
 				padding: 1rem
