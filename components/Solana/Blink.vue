@@ -88,18 +88,22 @@
 			url = action.href;
 		}
 
+		console.log(action.parameters);
+
 		// if parameters are present
 		if(action.parameters) {
-
 			// loop through the parameters
 			for(const p of action.parameters) {
-				console.log(p);
-
+				console.log(p.name, p[p.name]);
 				// replace the parameter in the url
 				url = url.replace(`%7B${ p.name }%7D`, p[p.name]);
-				console.log(url);
+				url = url.replace(`{${ p.name }}`, p[p.name]);
 			}
 		}
+
+		console.log(url);
+		action.loading = false;
+		return;
 
 		const res = await useFetch(url, {
 			method: 'POST',
