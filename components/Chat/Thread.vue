@@ -3,7 +3,7 @@
 		<div class="scroll-wrapper pretty-scrolls">
 			<div class="thread-wrapper">
 				<template v-for="m in chat.messages">
-					<chat-rim class="mb-3" :class="`is-${ m.type }`" :message="m" />
+					<chat-rim class="mb-3" :class="`is-${ m.role }`" :message="m" />
 				</template>
 			</div>
 		</div>

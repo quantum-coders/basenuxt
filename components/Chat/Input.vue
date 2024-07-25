@@ -18,7 +18,7 @@
 	const addMessage = () => {
 		if(prompt.value) {
 			chat.addMessage({
-				type: 'user',
+				role: 'user',
 				text: prompt.value,
 			});
 

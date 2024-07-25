@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 	],
 	app: {
 		head: {
-			title: 'Base Nuxt',
+			title: 'Luna AI - AI-powered Crypto Assistant',
 			link: [
 				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 			],

@@ -1,6 +1,9 @@
 <template>
 	<div class="rim-wrapper">
-		<div class="avatar"></div>
+		<div class="avatar">
+			<icon v-if="message.role === 'assistant'" name="material-symbols:dark-mode-outline-rounded" />
+			<icon v-if="message.role === 'user'" name="bx:happy-alt" />
+		</div>
 		<div class="rim">
 			<!-- bootstrap loading spinner -->
 			<div class="rim-loading" v-if="!!message.loading">
@@ -50,7 +53,7 @@
 			<div class="rim-actions">
 				<div class="actions">
 					<a href="#" @click.prevent="chat.openWis(message.uid)" v-if="message.role === 'assistant'">
-						<icon name="octicon:sidebar-collapse-24" />
+						<icon name="material-symbols:right-panel-close-rounded" />
 					</a>
 				</div>
 
@@ -115,6 +118,12 @@
 			aspect-ratio: 1
 			background: var(--bs-dark-bg-subtle)
 			border-radius: 50%
+			display: flex
+			justify-content: center
+			align-items: center
+
+			.icon
+				display: block
 
 		.rim
 			border: 1px solid var(--bs-border-color)
@@ -122,6 +131,7 @@
 			border-radius: 0.5rem
 			width: fit-content
 			max-width: 80%
+			min-width: 200px
 			overflow: hidden
 
 			&:has(.rim-image)
@@ -144,6 +154,9 @@
 
 			.rim-textual-content
 				padding: 0.5rem 1rem
+
+				&:has(div:empty)
+					display: none
 
 				& > div *:last-child
 					margin-bottom: 0
