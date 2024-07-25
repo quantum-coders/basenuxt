@@ -22,20 +22,11 @@
 			<div class="rim-rich-content" v-if="message.rims">
 				<template v-for="r in message.rims">
 					<div class="rim-image" v-if="r.rimType === 'image'">
-						<img alt="" :src="r.parameters.imageUrl">
+						<chat-rim-image :rim="r" />
 					</div>
 
 					<div class="rim-youtube-video" v-else-if="r.rimType === 'video'">
-						<!-- youtube video -->
-						<div class="ratio ratio-16x9">
-							<iframe
-								:src="`https://www.youtube.com/embed/${ r.parameters.videoId }`"
-								title="YouTube video player"
-								frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen
-							/>
-						</div>
+						<chat-rim-youtube-video :rim="r" />
 					</div>
 
 					<div class="rim-rich-wrapper" v-else-if="r.rimType === 'wallet'">

@@ -1,6 +1,6 @@
 <template>
 	<div class="thread-area">
-		<div class="scroll-wrapper pretty-scrolls">
+		<div class="scroll-wrapper pretty-scrolls" id="thread">
 			<div class="thread-wrapper">
 				<template v-for="m in chat.messages">
 					<chat-rim class="mb-3" :class="`is-${ m.role }`" :message="m" />

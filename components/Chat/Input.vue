@@ -15,7 +15,7 @@
 	const prompt = ref('');
 
 	const chat = useChatStore();
-	const addMessage = () => {
+	const addMessage = async () => {
 		if(prompt.value) {
 			chat.addMessage({
 				role: 'user',
@@ -24,14 +24,10 @@
 
 			chat.sendMessage(prompt.value);
 
-			// scroll to the bottom animated
-			const thread = document.querySelector('.thread-wrapper');
-			thread.scrollTo({
-				top: thread.scrollHeight,
-				behavior: 'smooth',
-			});
-
 			prompt.value = '';
+
+			await nextTick();
+			chat.scrollToBottom();
 		}
 	};
 </script>

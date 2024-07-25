@@ -1,5 +1,4 @@
 <template>
-
 	<div class="scroll-wrapper p-3">
 		<p class="text-end">
 			<a href="#" class="close" @click.prevent="chat.closeWis" :class="{ 'is-hidden': !chat.wisMessage }">

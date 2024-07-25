@@ -18,10 +18,19 @@ export const useChatStore = defineStore('chat', () => {
 		return message;
 	};
 
+	const scrollToBottom = () => {
+		// scroll to the bottom of #thread, animated
+		const thread = document.getElementById('thread');
+		thread.scrollTo({ top: thread.scrollHeight, behavior: 'smooth' });
+	}
+
 	const sendMessage = async (message) => {
 
 		// Create a message for assistant
 		const assistantMessage = addMessage({ role: 'assistant', text: '', loading: true });
+
+		// Scroll to the bottom of the thread
+		scrollToBottom();
 
 		const res = await $fetch(`${ useRuntimeConfig().public.baseURL }/ai/message/rim`, {
 			method: 'POST',
@@ -53,9 +62,11 @@ export const useChatStore = defineStore('chat', () => {
 					body: { text: messages.value[index].text },
 				});
 
-				console.log(audioRes.data.value.data);
-
 				messages.value[index].audio = audioRes.data.value.data;
+
+				// wait 5 seconds
+				await new Promise((resolve) => setTimeout(resolve, 250));
+				scrollToBottom();
 
 				break;
 			}
@@ -77,6 +88,7 @@ export const useChatStore = defineStore('chat', () => {
 
 				if(line.startsWith('{') && line.endsWith('}')) {
 					const index = messages.value.findIndex((m) => m.uid === assistantMessage.uid);
+					scrollToBottom();
 
 					try {
 						const json = JSON.parse(line);
@@ -123,6 +135,7 @@ export const useChatStore = defineStore('chat', () => {
 		addMessage,
 		sendMessage,
 		openWis,
-		closeWis
+		closeWis,
+		scrollToBottom
 	};
 });

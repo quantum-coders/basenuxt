@@ -1,5 +1,7 @@
 <template>
 	<div :style="styles" class="section-wrapper">
+		<img class="background" src="/images/background.jpg" alt="">
+
 		<header class="general-header d-flex align-items-center">
 
 			<div class="logo-wrapper">
@@ -55,6 +57,19 @@
 		flex-grow: 1
 		flex-direction: column
 
+		.background
+			position: fixed
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			object-fit: cover
+			z-index: 0
+			opacity: 0.025
+
+			[data-bs-theme="light"] &
+				filter: invert(1)
+
 	.general-header
 		height: 60px
 		border-bottom: 1px solid var(--bs-border-color)
@@ -63,16 +78,22 @@
 			display: flex
 			align-items: center
 			gap: 1rem
+			padding-left: 1rem
+
+			@media (min-width: $sm)
+				padding-left: 0
 
 			.header-icon
 				background: var(--bs-dark-bg-subtle)
 				width: 60px
 				height: 59px
-				display: flex
 				justify-content: center
 				align-items: center
-
 				font-size: 1.5rem
+				display: none
+
+				@media (min-width: $sm)
+					display: flex
 
 			.logo
 				width: auto
@@ -90,6 +111,10 @@
 	.general-sidebar
 		width: 60px
 		background: var(--bs-dark-bg-subtle)
+		display: none
+
+		@media (min-width: $sm)
+			display: block
 
 	.connect
 		flex-grow: 1
@@ -101,16 +126,31 @@
 		flex-grow: 1
 		display: flex
 		flex-direction: column
+		z-index: 1
 
 		.chat-controls
 			padding: 0 1rem 1rem
 
 	.wis
-		width: 60px
 		border-left: 1px solid var(--bs-border-color)
 		transition: all 500ms ease-in-out
+		position: fixed
+		width: 90vw
+		height: calc(100dvh - 60px)
+		right: -100vw
+		z-index: 100
+
+		@media (min-width: $sm)
+			width: 60px
+			position: relative
+			right: auto
+			height: auto
 
 		&.is-open
-			width: 600px
 			background: var(--bs-dark-bg-subtle)
+			right: 0
+
+			@media (min-width: $sm)
+				width: 600px
+				right: auto
 </style>

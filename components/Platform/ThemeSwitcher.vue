@@ -25,13 +25,13 @@
 
 <script setup>
 
-	const theme = ref(localStorage.getItem('theme') || 'light');
+	const theme = ref(localStorage.getItem('theme') || 'dark');
 	const check = ref(false);
 
-	const setTheme = (theme) => {
-		localStorage.setItem('theme', theme);
-		document.documentElement.setAttribute('data-bs-theme', theme);
-		theme.value = theme;
+	const setTheme = (t) => {
+		localStorage.setItem('theme', t);
+		document.documentElement.setAttribute('data-bs-theme', t);
+		theme.value = t;
 	};
 
 	onMounted(() => {
