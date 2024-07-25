@@ -23,7 +23,7 @@ export const useChatStore = defineStore('chat', () => {
 		// Create a message for assistant
 		const assistantMessage = addMessage({ role: 'assistant', text: '', loading: true });
 
-		const res = await $fetch('http://localhost:1337/ai/message/rim', {
+		const res = await $fetch(`${ useRuntimeConfig().public.baseURL }/ai/message/rim`, {
 			method: 'POST',
 			body: {
 				model: 'gpt-4',
@@ -48,7 +48,7 @@ export const useChatStore = defineStore('chat', () => {
 
 				const index = messages.value.findIndex((m) => m.uid === assistantMessage.uid);
 
-				const audioRes = await useFetch('http://localhost:1337/ai/text-to-audio', {
+				const audioRes = await useFetch(`${ useRuntimeConfig().public.baseURL }/ai/text-to-audio`, {
 					method: 'POST',
 					body: { text: messages.value[index].text },
 				});
