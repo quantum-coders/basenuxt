@@ -21,6 +21,7 @@ export const useChatStore = defineStore('chat', () => {
 	const scrollToBottom = () => {
 		// scroll to the bottom of #thread, animated
 		const thread = document.getElementById('thread');
+		if(!thread) return;
 		thread.scrollTo({ top: thread.scrollHeight, behavior: 'smooth' });
 	}
 

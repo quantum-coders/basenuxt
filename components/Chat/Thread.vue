@@ -1,10 +1,48 @@
 <template>
-	<div class="thread-area">
-		<div class="scroll-wrapper pretty-scrolls" id="thread">
+	<div class="thread-area d-flex flex-column flex-grow-1">
+		<div class="scroll-wrapper pretty-scrolls" id="thread" v-if="!!chat.messages.length">
 			<div class="thread-wrapper">
 				<template v-for="m in chat.messages">
 					<chat-rim class="mb-3" :class="`is-${ m.role }`" :message="m" />
 				</template>
+			</div>
+		</div>
+
+		<div v-else class="d-flex flex-column flex-grow-1 justify-content-end">
+			<div class="examples">
+
+				<h4 class="text-center mb-3">Try Luna now</h4>
+
+				<div class="examples-wrapper">
+					<div class="row">
+						<div class="col d-flex col-4">
+							<div class="example flex-grow-1" @click.prevent="chat.sendMessage('Give me my solana wallet balance')">
+								<p>
+									<icon name="material-symbols:account-balance-wallet-outline-rounded" />
+								</p>
+								<p>Give me my solana wallet balance</p>
+							</div>
+						</div>
+
+						<div class="col d-flex col-4">
+							<div class="example flex-grow-1" @click.prevent="chat.sendMessage('Find a video about Solana Blink Actions')">
+								<p>
+									<icon name="lucide:youtube" />
+								</p>
+								<p>Find a video about Solana Blink Actions</p>
+							</div>
+						</div>
+
+						<div class="col d-flex col-4">
+							<div class="example flex-grow-1" @click.prevent="chat.sendMessage('Transfer Sol to a user')">
+								<p>
+									<icon name="solar:transfer-horizontal-line-duotone" />
+								</p>
+								<p>Transfer Sol to a user</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -31,4 +69,22 @@
 
 			@media (min-width: $sm)
 				padding: 1rem
+
+	.examples
+		.examples-wrapper
+			max-width: 80%
+			margin: 0 auto
+
+		.example
+			border: 1px solid var(--bs-border-color)
+			border-radius: 0.5rem
+			padding: 2rem
+			cursor: pointer
+
+			&:hover
+				background: var(--bs-dark-bg-subtle)
+
+			.icon
+				font-size: 2rem
+				color: $primary
 </style>

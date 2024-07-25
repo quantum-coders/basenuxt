@@ -9,7 +9,8 @@ export default defineNuxtConfig({
 		head: {
 			title: 'Luna AI - AI-powered Crypto Assistant',
 			link: [
-				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+				// SVG
+				{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
 			],
 		},
 	},

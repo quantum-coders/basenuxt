@@ -22,6 +22,20 @@
 
 			<main class="connect" v-if="!solana.wallet">
 
+				<div class="connect-card">
+					<img src="/images/lunita.png" alt="">
+					<div class="copy p-3">
+						<h2>Connect Your Wallet to Unlock Luna AI's Full Potential</h2>
+						<p>Discover the future of AI-driven solutions with Luna AI! By connecting your wallet, you gain access to a revolutionary platform that harnesses the power of artificial intelligence to elevate your business strategies and operations</p>
+						<p class="text-end mb-0">
+							<a href="#" class="btn btn-primary" @click.prevent="connectWallet">
+								<icon name="material-symbols:account-balance-wallet-outline" />
+								Connect Wallet
+							</a>
+						</p>
+					</div>
+				</div>
+
 			</main>
 			<main v-else class="chat">
 				<!--<a href="#" class="btn btn-primary" @click.prevent="toggle">Toggle Sidebar</a>-->
@@ -47,6 +61,11 @@
 	};
 
 	const chat = useChatStore();
+
+	const connectWallet = () => {
+		// click .swv-button-trigger
+		document.querySelector('.swv-button-trigger').click();
+	};
 
 </script>
 
@@ -121,6 +140,30 @@
 		display: flex
 		justify-content: center
 		align-items: center
+
+		.connect-card
+			overflow: hidden
+			max-width: 800px
+			width: 80%
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.25)
+			border-radius: 1rem
+			display: flex
+			align-items: center
+			flex-direction: column
+
+			@media (min-width: $sm)
+				flex-direction: row
+
+			img
+				width: 100%
+
+				@media (min-width: $sm)
+					width: 300px
+
+			h2
+				font-size: 1.5rem
+				margin-bottom: 1rem
+				color: $primary
 
 	.chat
 		flex-grow: 1
