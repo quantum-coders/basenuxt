@@ -5,7 +5,20 @@
 				<icon name="material-symbols:right-panel-close-rounded" />
 			</a>
 		</p>
-		<chat-rim-wallet-info :rim="chat.wisMessage.rims[0]" v-if="chat.wisMessage && !!chat.wisMessage.rims.length" />
+		<template v-if="chat.wisMessage && !!chat.wisMessage.rims.length">
+
+			<template v-if="chat.wisMessage.rims[0].rimType === 'image'">
+				<chat-rim-image :rim="chat.wisMessage.rims[0]" />
+			</template>
+
+			<template v-if="chat.wisMessage.rims[0].rimType === 'wallet'">
+				<chat-rim-wallet-info :rim="chat.wisMessage.rims[0]" />
+			</template>
+
+			<template v-if="chat.wisMessage.rims[0].rimType === 'blink'">
+				<chat-rim-blink mode="card" :rim="chat.wisMessage.rims[0]" />
+			</template>
+		</template>
 	</div>
 </template>
 
@@ -17,6 +30,9 @@
 
 <!--suppress SassScssResolvedByNameOnly -->
 <style lang="sass" scoped>
+
+	img
+		max-width: 100%
 
 	.scroll-wrapper
 		overflow-x: clip

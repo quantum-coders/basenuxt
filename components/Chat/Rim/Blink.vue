@@ -1,6 +1,6 @@
 <template>
 	<div class="p-3">
-		<solana-blink :blink-url="rim.parameters.blinkUrl" mode="compact" :parameters="rim.parameters.blinkParameters" />
+		<solana-blink :blink-url="rim.parameters.blinkUrl" :mode="mode" :parameters="rim.parameters.blinkParameters" />
 	</div>
 </template>
 
@@ -10,6 +10,10 @@
 		rim: {
 			type: Object,
 			required: true,
+		},
+		mode: {
+			type: String,
+			default: 'compact',
 		},
 	});
 
