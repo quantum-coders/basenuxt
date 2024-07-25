@@ -33,6 +33,10 @@
 						<chat-rim-wallet-info :rim="r" />
 					</div>
 
+					<div class="rim-rich-wrapper" v-else-if="r.rimType === 'blink'">
+						<chat-rim-blink :rim="r" />
+					</div>
+
 					<div v-else>
 						<pre>{{ r }}</pre>
 					</div>
