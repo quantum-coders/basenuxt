@@ -17,7 +17,9 @@
 					<chat-input />
 				</div>
 			</main>
-			<aside :class="{ 'is-open': !!openedWis }" class="wis"></aside>
+			<aside :class="{ 'is-open': !!chat.wisMessage }" class="wis">
+				<chat-wis />
+			</aside>
 		</div>
 	</div>
 </template>
@@ -28,11 +30,7 @@
 		'--inner-wrapper-width': '1000px',
 	};
 
-	const openedWis = ref(false);
-
-	const toggle = () => {
-		openedWis.value = !openedWis.value;
-	};
+	const chat = useChatStore();
 
 </script>
 

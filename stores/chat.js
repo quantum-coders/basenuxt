@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const useChatStore = defineStore('chat', () => {
 
 	const messages = ref([]);
+	const wisMessage = ref(null);
 
 	const addMessage = (message) => {
 		// Add a unique ID to the message
@@ -108,9 +109,20 @@ export const useChatStore = defineStore('chat', () => {
 		}
 	};
 
+	const openWis = async (messageUid) => {
+		wisMessage.value = messages.value.find((m) => m.uid === messageUid);
+	}
+
+	const closeWis = () => {
+		wisMessage.value = null;
+	}
+
 	return {
 		messages,
+		wisMessage,
 		addMessage,
 		sendMessage,
+		openWis,
+		closeWis
 	};
 });

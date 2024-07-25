@@ -35,12 +35,8 @@
 						</div>
 					</div>
 
-					<div class="rim-text" v-else-if="r.rimType === 'wallet'">
-						<pre>{{ r.parameters }}</pre>
-						<template v-for="b in r.parameters.balances">
-							<article>{{ b.name }}: {{ b.balance }}</article>
-						</template>
-
+					<div class="rim-rich-wrapper" v-else-if="r.rimType === 'wallet'">
+						<chat-rim-wallet-info :rim="r" />
 					</div>
 
 					<div v-else>
@@ -52,6 +48,12 @@
 				<div v-html="html" />
 			</div>
 			<div class="rim-actions">
+				<div class="actions">
+					<a href="#" @click.prevent="chat.openWis(message.uid)" v-if="message.role === 'assistant'">
+						<icon name="octicon:sidebar-collapse-24" />
+					</a>
+				</div>
+
 				<span class="timestamp">{{ formattedTime }}</span>
 			</div>
 		</div>
@@ -60,6 +62,8 @@
 
 <script setup>
 	import { marked } from 'marked';
+
+	const chat = useChatStore();
 
 	const props = defineProps({
 		message: {
@@ -137,9 +141,6 @@
 				audio
 					width: 100%
 					height: 20px
-
-			.rim-rich-content
-				text-align: center
 
 			.rim-textual-content
 				padding: 0.5rem 1rem
