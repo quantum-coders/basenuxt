@@ -165,7 +165,7 @@
 								target="_blank"
 								v-if="finalLink"
 								class="btn btn-outline-primary"
-								:href="`http://localhost:3000/blink?b=${ finalLink }`"
+								:href="`${ useRuntimeConfig().public.appURL }/blink?b=${ finalLink }`"
 							>Test link in Luna</a>
 							<button class="btn btn-primary" @click="generateBlink">Generate Blink</button>
 						</p>
@@ -205,7 +205,7 @@
 	const originalBlink = ref(null);
 
 	const blinkLink = computed(() => {
-		return selectedType.value ? `http://localhost:1337/blinks/${ selectedType.value }` : null;
+		return selectedType.value ? `${ useRuntimeConfig().public.baseURL }/blinks/${ selectedType.value }` : null;
 	});
 
 	const finalLink = ref('');
