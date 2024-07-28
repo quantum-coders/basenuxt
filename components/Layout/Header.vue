@@ -1,7 +1,10 @@
 <template>
-	<header class="layout-header d-flex align-items-center">
+	<header class="general-header d-flex align-items-center">
 
 		<div class="logo-wrapper">
+			<div class="header-icon">
+				<icon name="material-symbols:dark-mode-outline-rounded" />
+			</div>
 			<svgo-luna-logo class="logo" />
 		</div>
 
@@ -9,7 +12,6 @@
 			<platform-theme-switcher />
 			<solana-wallet-connect />
 		</div>
-
 	</header>
 </template>
 
@@ -18,8 +20,9 @@
 
 <!--suppress SassScssResolvedByNameOnly -->
 <style lang="sass" scoped>
-	.blink-header
-		padding: 1rem
+	.general-header
+		height: 60px
+		border-bottom: 1px solid var(--bs-border-color)
 
 		.logo-wrapper
 			display: flex
@@ -31,13 +34,16 @@
 				padding-left: 0
 
 			.header-icon
-				background: var(--bs-dark-bg-subtle)
+				background: var(--bs-light-bg-subtle)
 				width: 60px
 				height: 59px
 				justify-content: center
 				align-items: center
 				font-size: 1.5rem
 				display: none
+
+				[data-bs-theme="dark"] &
+					background: var(--bs-dark-bg-subtle)
 
 				@media (min-width: $sm)
 					display: flex
@@ -50,4 +56,5 @@
 			width: 200px
 
 			padding-right: 1rem
+
 </style>

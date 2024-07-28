@@ -12,7 +12,7 @@
 			</div>
 
 			<div class="blink-actions" v-if="!blink.links?.actions">
-				<button class="btn btn-lg btn-primary w-100">{{ blink.label }}</button>
+				<button class="btn btn-primary w-100">{{ blink.label }}</button>
 			</div>
 
 			<div class="blink-actions gap-2 d-flex flex-wrap" v-else>
@@ -20,7 +20,7 @@
 					<template v-if="!a.parameters">
 						<button
 							@click.prevent="postBlink(a)"
-							class="btn btn-lg btn-primary w-100 solo-action"
+							class="btn btn-primary w-100 solo-action"
 							:class="{ 'btn-loading': a.loading }"
 						>{{ a.label }}
 						</button>
@@ -66,7 +66,11 @@
 	const props = defineProps({
 		blinkUrl: {
 			type: String,
-			required: true,
+			default: '',
+		},
+		blinkObject: {
+			type: Object,
+			default: () => ({}),
 		},
 		mode: {
 			type: String,
@@ -82,6 +86,12 @@
 
 	// fetch the b
 	const fetchBlink = async () => {
+
+		if(Object.keys(props.blinkObject).length > 0) {
+			blink.value = props.blinkObject;
+			return;
+		}
+
 		const res = await useFetch(props.blinkUrl);
 		blink.value = res.data.value;
 	};
@@ -97,8 +107,6 @@
 		} else {
 			url = action.href;
 		}
-
-		console.log(action.parameters);
 
 		// if parameters are present
 		if(action.parameters) {
@@ -166,6 +174,11 @@
 
 				img
 					border-radius: 0.5rem
+					aspect-ratio: 1
+					object-fit: cover
+
+			.blink-data
+				margin-bottom: 1rem
 
 			.blink-actions
 				margin-bottom: 1rem

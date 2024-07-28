@@ -1,25 +1,5 @@
 <template>
-	<div :style="styles" class="section-wrapper">
-		<img class="background" src="/images/background.jpg" alt="">
-
-		<header class="general-header d-flex align-items-center">
-
-			<div class="logo-wrapper">
-				<div class="header-icon">
-					<icon name="material-symbols:dark-mode-outline-rounded" />
-				</div>
-				<svgo-luna-logo class="logo" />
-			</div>
-
-			<div class="header-tools d-flex ms-auto align-items-center justify-content-end gap-2">
-				<platform-theme-switcher />
-				<solana-wallet-connect />
-			</div>
-
-		</header>
-		<div class="rim-experience">
-			<aside class="general-sidebar"></aside>
-
+	<div class="rim-experience">
 			<main class="connect" v-if="!solana.wallet">
 
 				<div class="connect-card">
@@ -49,10 +29,10 @@
 				<chat-wis />
 			</aside>
 		</div>
-	</div>
 </template>
 
 <script setup>
+	definePageMeta({ layout: 'luna' });
 
 	const solana = useSolanaStore();
 
@@ -71,58 +51,6 @@
 
 <!--suppress SassScssResolvedByNameOnly -->
 <style lang="sass" scoped>
-	.section-wrapper
-		display: flex
-		flex-grow: 1
-		flex-direction: column
-
-		.background
-			position: fixed
-			top: 0
-			left: 0
-			width: 100%
-			height: 100%
-			object-fit: cover
-			z-index: 0
-			opacity: 0.025
-
-			[data-bs-theme="light"] &
-				filter: invert(1)
-
-	.general-header
-		height: 60px
-		border-bottom: 1px solid var(--bs-border-color)
-
-		.logo-wrapper
-			display: flex
-			align-items: center
-			gap: 1rem
-			padding-left: 1rem
-
-			@media (min-width: $sm)
-				padding-left: 0
-
-			.header-icon
-				background: var(--bs-dark-bg-subtle)
-				width: 60px
-				height: 59px
-				justify-content: center
-				align-items: center
-				font-size: 1.5rem
-				display: none
-
-				@media (min-width: $sm)
-					display: flex
-
-			.logo
-				width: auto
-				height: 40px
-
-		.header-tools
-			width: 200px
-
-			padding-right: 1rem
-
 	.rim-experience
 		container-type: size
 		display: flex
@@ -132,22 +60,20 @@
 			.wis
 				position: fixed
 				left: auto
-				right: -80dvw
-				width: 80dvw
+				right: -90dvw
+				width: 90dvw
 				height: calc(100dvh - 60px)
-				background: var(--bs-dark-bg-subtle)
+				background: var(--bs-light-bg-subtle)
+
+				[data-bs-theme="dark"] &
+					background: var(--bs-dark-bg-subtle)
 
 				&.is-open
-					width: 80dvw
+					width: 90dvw
 					right: 0
 
-	.general-sidebar
-		width: 60px
-		background: var(--bs-dark-bg-subtle)
-		display: none
-
-		@media (min-width: $sm)
-			display: block
+					.scroll-wrapper
+						min-width: 90dvw
 
 	.connect
 		flex-grow: 1
@@ -200,6 +126,9 @@
 		right: -100vw
 		z-index: 100
 
+		.scroll-wrapper
+			min-width: 90vw
+
 		@media (min-width: $sm)
 			width: 60px
 			position: relative
@@ -207,10 +136,16 @@
 			height: auto
 
 		&.is-open
-			background: var(--bs-dark-bg-subtle)
+			background: var(--bs-light-bg-subtle)
 			right: 0
+
+			[data-bs-theme="dark"] &
+				background: var(--bs-dark-bg-subtle)
 
 			@media (min-width: $sm)
 				width: 600px
 				right: auto
+
+				.scroll-wrapper
+					min-width: 600px
 </style>

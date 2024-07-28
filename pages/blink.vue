@@ -45,7 +45,7 @@
 				padding-left: 0
 
 			.header-icon
-				background: var(--bs-dark-bg-subtle)
+				background: var(--bs-light-bg-subtle)
 				width: 60px
 				height: 59px
 				justify-content: center
