@@ -45,7 +45,7 @@
 				</div>
 			</main>
 
-			<aside :class="{ 'is-open': !!chat.wisMessage }" class="wis">
+			<aside :class="{ 'is-open': !!chat.wisMessage && solana.wallet }" class="wis">
 				<chat-wis />
 			</aside>
 		</div>
@@ -124,8 +124,22 @@
 			padding-right: 1rem
 
 	.rim-experience
+		container-type: size
 		display: flex
 		flex-grow: 1
+
+		@container (max-width: 1300px)
+			.wis
+				position: fixed
+				left: auto
+				right: -80dvw
+				width: 80dvw
+				height: calc(100dvh - 60px)
+				background: var(--bs-dark-bg-subtle)
+
+				&.is-open
+					width: 80dvw
+					right: 0
 
 	.general-sidebar
 		width: 60px
@@ -151,13 +165,16 @@
 			align-items: center
 			flex-direction: column
 
-			@media (min-width: $sm)
+			@media (min-width: $md)
 				flex-direction: row
 
 			img
 				width: 100%
+				max-height: 250px
+				object-fit: contain
+				background: black
 
-				@media (min-width: $sm)
+				@media (min-width: $md)
 					width: 300px
 
 			h2

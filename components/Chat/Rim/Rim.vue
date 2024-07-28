@@ -12,11 +12,8 @@
 				</div>
 			</div>
 
-			<div class="rim-audio" v-if="!!message.audio">
-				<audio controls>
-					<source :src="message.audio" type="audio/mpeg">
-					Your browser does not support the audio element.
-				</audio>
+			<div class="rim-audio" v-if="message.role === 'assistant' && !message.loading">
+				<chat-audio-player :audio-url="message.audio || ''" :loading="message.audioLoading || true" />
 			</div>
 
 			<div class="rim-rich-content" v-if="message.rims">
@@ -47,7 +44,12 @@
 			</div>
 			<div class="rim-actions">
 				<div class="actions">
-					<a href="#" @click.prevent="chat.openWis(message.uid)" v-if="message.role === 'assistant'">
+					<a
+						class="action"
+						href="#"
+						@click.prevent="chat.openWis(message.uid)"
+						v-if="message.role === 'assistant' && typeof message.rims !== 'undefined' && message.rims.length"
+					>
 						<icon name="material-symbols:right-panel-close-rounded" />
 					</a>
 				</div>
@@ -132,6 +134,9 @@
 			min-width: 100px
 			overflow: hidden
 
+			@media (min-width: $sm)
+				max-width: 75%
+
 			&:has(.rim-image)
 				min-width: 200px
 				width: min-content
@@ -145,6 +150,7 @@
 			.rim-audio
 				padding: 0.5rem
 				display: flex
+				flex-direction: column
 				justify-content: center
 				border-bottom: 1px solid var(--bs-border-color)
 
@@ -165,6 +171,15 @@
 				padding: 0.2rem 0.5rem
 				display: flex
 				border-top: 1px solid var(--bs-border-color)
+
+				.actions
+					display: flex
+					align-items: center
+
+					.action
+						display: flex
+						align-items: center
+						justify-content: center
 
 				.timestamp
 					margin-left: auto

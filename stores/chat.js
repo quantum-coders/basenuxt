@@ -12,6 +12,7 @@ export const useChatStore = defineStore('chat', () => {
 
 		// Add timestamp to the message
 		message.timestamp = new Date().toISOString();
+		message.audioLoading = false;
 
 		messages.value.push(message);
 
@@ -23,7 +24,7 @@ export const useChatStore = defineStore('chat', () => {
 		const thread = document.getElementById('thread');
 		if(!thread) return;
 		thread.scrollTo({ top: thread.scrollHeight, behavior: 'smooth' });
-	}
+	};
 
 	const sendMessage = async (message) => {
 
@@ -40,7 +41,7 @@ export const useChatStore = defineStore('chat', () => {
 				prompt: message,
 				properties: {
 					wallet: useSolanaStore().wallet,
-				}
+				},
 			},
 			responseType: 'stream',
 		});
@@ -58,12 +59,15 @@ export const useChatStore = defineStore('chat', () => {
 
 				const index = messages.value.findIndex((m) => m.uid === assistantMessage.uid);
 
+				messages.value[index].audioLoading = true;
+
 				const audioRes = await useFetch(`${ useRuntimeConfig().public.baseURL }/ai/text-to-audio`, {
 					method: 'POST',
 					body: { text: messages.value[index].text },
 				});
 
 				messages.value[index].audio = audioRes.data.value.data;
+				messages.value[index].audioLoading = false;
 
 				// wait 5 seconds
 				await new Promise((resolve) => setTimeout(resolve, 250));
@@ -124,11 +128,11 @@ export const useChatStore = defineStore('chat', () => {
 
 	const openWis = async (messageUid) => {
 		wisMessage.value = messages.value.find((m) => m.uid === messageUid);
-	}
+	};
 
 	const closeWis = () => {
 		wisMessage.value = null;
-	}
+	};
 
 	return {
 		messages,
@@ -137,6 +141,6 @@ export const useChatStore = defineStore('chat', () => {
 		sendMessage,
 		openWis,
 		closeWis,
-		scrollToBottom
+		scrollToBottom,
 	};
 });

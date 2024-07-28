@@ -1,11 +1,16 @@
 <template>
 	<div class="scroll-wrapper p-3">
 		<p class="text-end">
-			<a href="#" class="close" @click.prevent="chat.closeWis" :class="{ 'is-hidden': !chat.wisMessage }">
+			<a
+				href="#"
+				class="close"
+				@click.prevent="chat.closeWis"
+				:class="{ 'is-hidden': !chat.wisMessage || !solana.wallet }"
+			>
 				<icon name="material-symbols:right-panel-close-rounded" />
 			</a>
 		</p>
-		<template v-if="chat.wisMessage && !!chat.wisMessage.rims.length">
+		<template v-if="chat.wisMessage && !!chat.wisMessage.rims.length && solana.wallet">
 
 			<template v-if="chat.wisMessage.rims[0].rimType === 'image'">
 				<chat-rim-image :rim="chat.wisMessage.rims[0]" />
@@ -29,6 +34,7 @@
 <script setup>
 
 	const chat = useChatStore();
+	const solana = useSolanaStore();
 
 </script>
 
