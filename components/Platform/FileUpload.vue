@@ -1,9 +1,6 @@
 <template>
 	<label class="upload-file">
-		<loading
-			:active="isLoading"
-			:is-full-page="false"
-		/>
+		<platform-loading class="loading" :active="isLoading" />
 
 		<input
 			:id="props.id"
@@ -52,8 +49,6 @@
 <script setup>
 
 	const attrs = useAttrs();
-	import Loading from 'vue3-loading-overlay';
-	import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 	import { v4 as uuidv4 } from 'uuid';
 
 	const localFiles = ref([]);
@@ -171,8 +166,17 @@
 	.upload-file
 		display: block
 
+		.loading
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			z-index: 1
+
 	.drop-zone
 		display: flex
+		padding: 1rem
 		flex-direction: column
 		align-items: center
 		justify-content: center

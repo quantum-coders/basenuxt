@@ -71,8 +71,9 @@
 			height: 1em
 			border-radius: 1em
 			width: 2em
-			background: $gray-300
-			box-shadow: inset 0 0 1px $gray-300
+			min-width: 2em
+			background: var(--bs-dark-bg-subtle)
+			box-shadow: inset 0 0 1px var(--bs-dark-bg-subtle)
 			position: relative
 			transition: all .25s
 
@@ -87,7 +88,7 @@
 				top: 2px
 				transform: translateX(0)
 				transition: all .25s
-				background: $gray-400
+				background: var(--bs-light-bg-subtle)
 
 		// has checked checkbox
 		&:has(input[type="checkbox"]:checked):not(.logic-inverted),
