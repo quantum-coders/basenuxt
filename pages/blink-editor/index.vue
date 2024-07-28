@@ -159,8 +159,14 @@
 								target="_blank"
 								v-if="finalLink"
 								class="btn btn-outline-primary"
+								:href="`https://dial.to/?action=solana-action:${ finalLink }`"
+							>Test link in Dialect</a>
+							<a
+								target="_blank"
+								v-if="finalLink"
+								class="btn btn-outline-primary"
 								:href="`http://localhost:3000/blink?b=${ finalLink }`"
-							>Test links</a>
+							>Test link in Luna</a>
 							<button class="btn btn-primary" @click="generateBlink">Generate Blink</button>
 						</p>
 					</template>
@@ -203,6 +209,7 @@
 	});
 
 	const finalLink = ref('');
+	const dialectLink = ref('');
 
 	const fetchBlink = async (url) => {
 		const res = await useFetch(url);
@@ -325,6 +332,8 @@
 
 		queryString = queryString ? '?' + encodeURIComponent(queryString) : '';
 
+
+		dialectLink.value = 'https://dial.to/?action=solana-action:' + queryString;
 		finalLink.value = baseLink + queryString;
 	};
 
