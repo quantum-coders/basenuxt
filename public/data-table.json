@@ -1,0 +1,341 @@
+{
+    "result": "success",
+    "status": 200,
+    "data": [
+        {
+            "id": 1,
+            "uid": "clyolsw4d00001q64nx2hoas3",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "Rodrigo",
+            "lastname": "Tejero",
+            "nicename": "Rodrigo Tejero",
+            "type": "Admin",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "idAvatar": 20,
+                "lastname": "Tejero",
+                "firstname": "Rodrigo"
+            },
+            "created": "2024-07-16T16:04:13.596Z",
+            "modified": "2024-07-16T16:04:13.596Z"
+        },
+        {
+            "id": 5,
+            "uid": "clm9fuh430000qtn8fhf9zv3d",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Ejecutivo Comercial",
+            "type": "Ejecutivo Comercial",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "idAvatar": "652d7b5b19296f4f4d29e979",
+                "lastname": "Comercial",
+                "firstname": "Ejecutivo"
+            },
+            "created": "2023-09-07T17:24:29.092Z",
+            "modified": "2023-09-07T17:24:29.092Z"
+        },
+        {
+            "id": 6,
+            "uid": "clnkmipyn0000qtl82xaqupqh",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Rodrigo Antonio Tejero",
+            "type": "Admin",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "idAvatar": "652f0ea39e3074ad121c1da6",
+                "lastname": "Tejero",
+                "firstname": "Rodrigo Antonio"
+            },
+            "created": "2023-10-10T17:56:28.272Z",
+            "modified": "2023-10-10T17:56:28.272Z"
+        },
+        {
+            "id": 7,
+            "uid": "clnku8x3k0000432ydvwelza1",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Administrador Promohabitat",
+            "type": "Admin",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "idAvatar": "65354fc03ddefcc81f0d7cbd",
+                "lastname": "Promohabitat",
+                "firstname": "Administrador"
+            },
+            "created": "2023-10-10T21:32:47.889Z",
+            "modified": "2023-10-10T21:32:47.889Z"
+        },
+        {
+            "id": 8,
+            "uid": "clnkub7co0004432yzllov9kl",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Desarrollador Promohabitat",
+            "type": "Desarrollador",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Desarrollador"
+            },
+            "created": "2023-10-10T21:34:34.488Z",
+            "modified": "2023-10-10T21:34:34.488Z"
+        },
+        {
+            "id": 9,
+            "uid": "clnkue0bc0006432yklo5wekv",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Ejecutivo Comercial Promohabitat",
+            "type": "Ejecutivo Comercial",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Ejecutivo Comercial"
+            },
+            "created": "2023-10-10T21:36:45.337Z",
+            "modified": "2023-10-10T21:36:45.337Z"
+        },
+        {
+            "id": 10,
+            "uid": "clnkugkws0008432ygzmvnwk8",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Gerente Comercial Promohabitat",
+            "type": "Gerente Comercial",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Gerente Comercial"
+            },
+            "created": "2023-10-10T21:38:45.340Z",
+            "modified": "2023-10-10T21:38:45.340Z"
+        },
+        {
+            "id": 11,
+            "uid": "clnkuk71y000a432y7giyrp4n",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Gerente de Operaciones Promohabitat",
+            "type": "Gerente de Operaciones",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Gerente de Operaciones"
+            },
+            "created": "2023-10-10T21:41:34.007Z",
+            "modified": "2023-10-10T21:41:34.007Z"
+        },
+        {
+            "id": 12,
+            "uid": "clnkun7tr000c432yoluo2yhh",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Ejecutivo de Atencion a Clientes Promohabitat",
+            "type": "Ejecutivo de Atención a Clientes",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Ejecutivo de Atencion a Clientes"
+            },
+            "created": "2023-10-10T21:43:54.975Z",
+            "modified": "2023-10-10T21:43:54.975Z"
+        },
+        {
+            "id": 13,
+            "uid": "clnkupi0v000e432y582dwo4a",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Gerente Atención a Clientes! Promohabitat",
+            "type": "Gerente de Atención a Clientes",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "office": "656e65e3c230aa00d73e09b9",
+                "idAvatar": "",
+                "lastname": "Promohabitat",
+                "firstname": "Gerente Atención a Clientes!"
+            },
+            "created": "2023-10-10T21:45:41.503Z",
+            "modified": "2023-10-10T21:45:41.503Z"
+        },
+		{
+            "id": 5,
+            "uid": "clm9fuh430000qtn8fhf9zv3d",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Ejecutivo Comercial",
+            "type": "Ejecutivo Comercial",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "idAvatar": "652d7b5b19296f4f4d29e979",
+                "lastname": "Comercial",
+                "firstname": "Ejecutivo"
+            },
+            "created": "2023-09-07T17:24:29.092Z",
+            "modified": "2023-09-07T17:24:29.092Z"
+        },
+        {
+            "id": 6,
+            "uid": "clnkmipyn0000qtl82xaqupqh",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Rodrigo Antonio Tejero",
+            "type": "Admin",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "idAvatar": "652f0ea39e3074ad121c1da6",
+                "lastname": "Tejero",
+                "firstname": "Rodrigo Antonio"
+            },
+            "created": "2023-10-10T17:56:28.272Z",
+            "modified": "2023-10-10T17:56:28.272Z"
+        },
+        {
+            "id": 7,
+            "uid": "clnku8x3k0000432ydvwelza1",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Administrador Promohabitat",
+            "type": "Admin",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "idAvatar": "65354fc03ddefcc81f0d7cbd",
+                "lastname": "Promohabitat",
+                "firstname": "Administrador"
+            },
+            "created": "2023-10-10T21:32:47.889Z",
+            "modified": "2023-10-10T21:32:47.889Z"
+        },
+        {
+            "id": 8,
+            "uid": "clnkub7co0004432yzllov9kl",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Desarrollador Promohabitat",
+            "type": "Desarrollador",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Desarrollador"
+            },
+            "created": "2023-10-10T21:34:34.488Z",
+            "modified": "2023-10-10T21:34:34.488Z"
+        },
+        {
+            "id": 9,
+            "uid": "clnkue0bc0006432yklo5wekv",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Ejecutivo Comercial Promohabitat",
+            "type": "Ejecutivo Comercial",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Ejecutivo Comercial"
+            },
+            "created": "2023-10-10T21:36:45.337Z",
+            "modified": "2023-10-10T21:36:45.337Z"
+        },
+        {
+            "id": 10,
+            "uid": "clnkugkws0008432ygzmvnwk8",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Gerente Comercial Promohabitat",
+            "type": "Gerente Comercial",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Gerente Comercial"
+            },
+            "created": "2023-10-10T21:38:45.340Z",
+            "modified": "2023-10-10T21:38:45.340Z"
+        },
+        {
+            "id": 11,
+            "uid": "clnkuk71y000a432y7giyrp4n",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Gerente de Operaciones Promohabitat",
+            "type": "Gerente de Operaciones",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Gerente de Operaciones"
+            },
+            "created": "2023-10-10T21:41:34.007Z",
+            "modified": "2023-10-10T21:41:34.007Z"
+        },
+        {
+            "id": 12,
+            "uid": "clnkun7tr000c432yoluo2yhh",
+            "username": "user@example.com",
+            "email": "user@example.com",
+            "firstname": "",
+            "lastname": "",
+            "nicename": "Ejecutivo de Atencion a Clientes Promohabitat",
+            "type": "Ejecutivo de Atención a Clientes",
+            "status": "Active",
+            "language": "en",
+            "metas": {
+                "lastname": "Promohabitat",
+                "firstname": "Ejecutivo de Atencion a Clientes"
+            },
+            "created": "2023-10-10T21:43:54.975Z",
+            "modified": "2023-10-10T21:43:54.975Z"
+        }
+    ],
+    "message": "user retrieved successfully",
+    "count": 18
+}

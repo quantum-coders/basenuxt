@@ -31,10 +31,20 @@
 		</div>
 
 		<div class="data-table-scroll flex-grow-1 mb-3" ref="dataTableWrapper">
-			<loading
+			<platform-loading
 				:active="!!isLoading"
 				:is-full-page="false"
-			/>
+			>
+				<template #default>
+					<slot name="loadingDefault" />
+				</template>
+				<template #before>
+					<slot name="loadingBefore" />
+				</template>
+				<template #after>
+					<slot name="loadingAfter" />
+				</template>
+			</platform-loading>
 
 			<div
 				class="data-table-wrapper flex-grow-1"
@@ -95,12 +105,12 @@
 						v-if="!items.length"
 						class="d-flex flex-grow-1 align-items-center justify-content-center flex-column"
 					>
-						<div class="empty-wrapper">
+						<tr class="empty-wrapper" v-if="!isLoading">
 							<slot name="empty-results">
 								<icon name="iconoir:glass-empty" />
+								<p>{{ getDictionary('notFound') }}</p>
 							</slot>
-							<p>{{ getDictionary('notFound') }}</p>
-						</div>
+						</tr>
 					</tbody>
 
 					<tbody v-else>
@@ -131,7 +141,7 @@
 
 		<div class="d-flex align-items-center justify-content-between">
 			<!-- showing item from 1 to x of y items -->
-			<p class="mb-0">
+			<p class="mb-0" v-if="items.length">
 				{{ getDictionary('showing') }}
 				{{ (currentPage - 1) * perPage + 1 }}
 				{{ getDictionary('to') }}
@@ -139,6 +149,9 @@
 				{{ getDictionary('of') }}
 				{{ totalItems }}
 				{{ getDictionary('items') }}
+			</p>
+			<p class="mb-0" v-else>
+				{{ getDictionary('noItems') }}
 			</p>
 
 			<div
@@ -179,10 +192,25 @@
 </template>
 
 <script setup>
+	/*
+	* Quantum Data Table v1.0.0
+	* -------------------------
+	* This component is a data table that can be used to display data in a table format.
+	* It has the following features:
+	* - Pagination
+	* - Sorting
+	* - Search
+	* - Checkboxes
+	* - Resizable columns
+	* - Custom fields
+	* - Custom actions
+	* - Custom empty results
+	* - Custom dictionary
+	* - Custom perPage
+	* - Custom sort
+	*/
+
 	import { VueAwesomePaginate } from 'vue-awesome-paginate';
-	import Loading from 'vue3-loading-overlay';
-	import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
-	const el = ref(null);
 
 	// function to resolve the element from item
 	const resolveProp = function(item, val) {
@@ -224,6 +252,7 @@
 		to: 'to',
 		of: 'of',
 		items: 'items',
+		noItems: 'No items found',
 	};
 
 	// function to get the dictionary word from props, if not found, use the baseDictionary
@@ -646,7 +675,7 @@
 			top: 2px
 
 	:deep(.resizing)
-		background: var(--bs-gray-300)
+		background: var(--bs-border-color)
 
 	.data-table-wrapper
 		position: absolute
@@ -660,12 +689,12 @@
 	.table
 		position: relative
 		border-collapse: collapse
-		background: var(--bs-white)
+		background: var(--bs-body-bg)
 		table-layout: fixed
 
 		:deep(td)
 			padding: 0.5rem
-			border-bottom: 1px solid var(--bs-gray-300)
+			border-bottom: 1px solid var(--bs-border-color)
 			white-space: nowrap
 			text-overflow: ellipsis
 			overflow: hidden
@@ -675,7 +704,7 @@
 			position: sticky
 			top: 0
 			z-index: 100
-			background: var(--bs-white)
+			background: var(--bs-light-bg-subtle)
 			font-size: 0.65rem
 			white-space: nowrap
 			text-overflow: ellipsis
@@ -706,7 +735,7 @@
 				left: 0
 				width: 100%
 				height: 1px
-				background: var(--bs-gray-300)
+				background: var(--bs-border-color)
 
 			span
 				text-overflow: ellipsis
@@ -725,7 +754,7 @@
 				pointer-events: none
 
 			&:hover
-				background: var(--bs-gray-300)
+				background: var(--bs-border-color)
 
 		// Last column resizer cannot be dragged
 		:deep(th:last-child .resizer)
@@ -737,9 +766,9 @@
 			opacity: 0.5
 
 	.btn-clear
-		background: white
-		border-top: 1px solid #ced4da
-		border-bottom: 1px solid #ced4da
+		background: var(--bs-light-bg-subtle)
+		border-top: 1px solid var(--bs-border-color)
+		border-bottom: 1px solid var(--bs-border-color)
 
 	.empty-wrapper
 		display: flex
@@ -758,7 +787,6 @@
 		.icon
 			font-size: 4rem
 			padding: 0
-			fill: red !important
 
 		p
 			width: 80%

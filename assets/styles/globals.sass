@@ -3,17 +3,14 @@
 *
 	position: relative
 
-
 body,
 html
 	min-height: 100vh
-
 
 #__nuxt
 	min-height: 100vh
 	display: flex
 	flex-direction: column
-
 
 /* Pretty Scrollbars */
 
@@ -22,50 +19,38 @@ html
 		width: 0.5rem
 		height: 0.5rem
 
-
 	&::-webkit-scrollbar-track
-		background: $gray-100
-
+		background: rgba(var(--bs-body-color-rgb), 0.025)
 
 	&::-webkit-scrollbar-thumb
-		background: $gray-300
-
+		background: var(--bs-light-bg-subtle)
 
 	&::-webkit-scrollbar-thumb:hover
-		background: $gray-400
-
+		background: rgba(var(--bs-body-color-rgb), 0.25)
 
 	&::-webkit-scrollbar-thumb:active
-		background: $gray-500
-
+		background: rgba(var(--bs-body-color-rgb), 0.33)
 
 	&::-webkit-scrollbar-corner
-		background: $gray-100
-
+		background: rgba(var(--bs-body-color-rgb), 0.025)
 
 	&::-webkit-scrollbar-button
-		background: $gray-100
-
+		background: rgba(var(--bs-body-color-rgb), 0.025)
 
 	&::-webkit-scrollbar-button:start:decrement
 		height: 0
 
-
 	&::-webkit-scrollbar-button:end:increment
 		height: 0
-
 
 	&::-webkit-scrollbar-button:horizontal:start:decrement
 		width: 0
 
-
 	&::-webkit-scrollbar-button:horizontal:end:increment
 		width: 0
 
-
 .alert
 	border: 0
-
 
 	.btn-close
 		font-size: 0.75rem

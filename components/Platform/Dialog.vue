@@ -7,6 +7,18 @@
 
 <script setup>
 
+	// Receive function from parent as close callback
+	const props = defineProps({
+		closeDialog: {
+			type: Function,
+			default: null,
+		},
+		closeOnBackdrop: {
+			type: Boolean,
+			default: true,
+		},
+	});
+
 	// Get the dialog element from the ref
 	const dialog = ref(null);
 
@@ -15,9 +27,7 @@
 		dialog.value.showModal();
 	};
 
-	const open = () => {
-		openDialog();
-	};
+	const open = () => { openDialog(); };
 
 	const closeDialog = () => {
 		dialog.value.classList.add('hide');
@@ -31,9 +41,29 @@
 		});
 	};
 
-	const close = () => {
-		closeDialog();
-	};
+	const close = () => { closeDialog(); };
+
+	onMounted(() => {
+		if(props.closeOnBackdrop) {
+			dialog.value.addEventListener('click', function(event) {
+				const rect = dialog.value.getBoundingClientRect();
+				const isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height && rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
+				if(!isInDialog) {
+					close();
+				}
+			});
+		}
+	});
+
+	onUnmounted(() => {
+		if(props.closeOnBackdrop) {
+			if(dialog && dialog.value) {
+				if(props.closeOnBackdrop) {
+					dialog.value.removeEventListener('click', () => { }, false);
+				}
+			}
+		}
+	});
 
 	defineExpose({ openDialog, closeDialog, open, close });
 </script>
@@ -41,9 +71,10 @@
 <style lang="sass" scoped>
 
 	.dialog
-		border: 0
+		border: 1px solid var(--bs-border-color)
 		padding: 1rem
 		border-radius: 0.5rem
+		background: var(--bs-body-bg)
 
 		&[open]
 			animation: show 0.3s ease-out forwards
@@ -60,9 +91,9 @@
 
 	@keyframes backdrop-fade
 		from
-			background: rgba(black, 0)
+			background: rgba(var(--bs-body-color-rgb), 0)
 		to
-			background: rgba(black, 0.5)
+			background: rgba(var(--bs-dark-rgb), 0.5)
 
 	@keyframes show
 		from
